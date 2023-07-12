@@ -5,18 +5,6 @@ Created on Wed Jul 12 23:50:40 2023
 @author: Legion
 """
 
-########
-# Menu #
-########
-
-def displayMenu():
-    choices=['1','2','3','4']
-    print("1. Count Digits\n2. Find Max\n3. Count tags\n4. Exit")
-    print("- - - - - - - - - - - - - - -")
-    choice=input("Enter a choice:")
-    while (not choice.isnumeric()) or choice not in choices:
-        choice=input("Enter a choice:")
-    return int(choice)
 
 ############
 # Choice 1 #
@@ -27,8 +15,6 @@ def count(n):
         return 0
     else:
         return 1+count(n//10)
-n=int(input("enter a negative or positive number:"))
-print(count(n))
 
 ############
 # Choice 2 #
@@ -40,14 +26,37 @@ def maximum(l):
     elif len(l)==0:
         return 0
     elif l[0]>l[1]:
-        #return maximum(l[0:1]+l[2::])
         del l[1]
         return maximum(l)
     else:
         del l[0]
         return maximum(l)
-        #return maximum(l[1::])
-l=[-1,-3,-5,-4,10,90,80]
-print(maximum(l))
-        
-displayMenu()
+
+########
+# Menu #
+########
+
+def main():
+    choices=['1','2','3','4']
+    print("1. Count Digits\n2. Find Max\n3. Count tags\n4. Exit")
+    print("- - - - - - - - - - - - - - -")
+    choice=input("Enter a choice:")
+    while (not choice.isnumeric()) or choice not in choices:
+        choice=input("Enter a choice:")
+    while choice!='4':
+            if choice=='1':
+                n=int(input("enter a negative or positive number:"))
+                print(count(n))
+            elif choice=='2':
+                l=[]
+                size=input("enter the size of the list:")
+                while not size.isnumeric():
+                    size=input("enter the size of the list:")
+                for i in range(int(size)):
+                    value=int(input(f"enter value {i}:"))
+                    l.append(value)
+                print(maximum(l))
+            choice=input("Enter a choice:")
+            while (not choice.isnumeric()) or choice not in choices:
+                choice=input("Enter a choice:") 
+main()
