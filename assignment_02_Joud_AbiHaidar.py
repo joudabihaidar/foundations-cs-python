@@ -4,6 +4,20 @@ Created on Wed Jul 12 23:50:40 2023
 
 @author: Legion
 """
+
+########
+# Menu #
+########
+
+def displayMenu():
+    choices=['1','2','3','4']
+    print("1. Count Digits\n2. Find Max\n3. Count tags\n4. Exit")
+    print("- - - - - - - - - - - - - - -")
+    choice=input("Enter a choice:")
+    while (not choice.isnumeric()) or choice not in choices:
+        choice=input("Enter a choice:")
+    return int(choice)
+
 ############
 # Choice 1 #
 ############
@@ -35,3 +49,5 @@ def maximum(l):
         #return maximum(l[1::])
 l=[-1,-3,-5,-4,10,90,80]
 print(maximum(l))
+        
+displayMenu()
