@@ -31,6 +31,19 @@ def maximum(l):
     else:
         del l[0]
         return maximum(l)
+    
+############
+# Choice 3 #
+############
+
+def tagOcc(html,tag,closingTag):
+    if html==[]:
+        return 0
+    elif closingTag in html[0]: #that way if we don't have a closing tag it will not count it
+        return 1+tagOcc(html[1::],tag,closingTag)
+    else:
+        return tagOcc(html[1::],tag,closingTag)
+
 
 ########
 # Menu #
@@ -69,18 +82,16 @@ def main():
                 tag=input("Enter the tag that you want:")
                 while tag not in html_tags:
                     tag=input("Enter the tag that you want:")
+                closingTag="<"+"/"+tag+">"
                 #html_file=input("enter the path of your html file:")
                 html_file='C:/Users/Legion/Desktop/quizHtml/cv.html'
                 with open(html_file, 'r') as file:
                     html_content=file.read()
                 print(html_content)
+                html=html_content.split()
+                print(tagOcc(html,tag,closingTag))
                 
             choice=input("Enter a choice:")
             while (not choice.isnumeric()) or choice not in choices:
                 choice=input("Enter a choice:") 
-                
-                
-
-
-
 main()
