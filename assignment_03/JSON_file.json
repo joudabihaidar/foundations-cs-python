@@ -1,0 +1,19 @@
+[{
+    "name":"Joud",
+    "age":19,
+    "major": "Bachelor's in mathematics option Data science",
+    "location": "zahle"
+},
+{
+    "name":"Alice",
+    "age":20,
+    "major": "Computer graphics",
+    "location": "beirut"
+}
+{
+    "name":"Anthony",
+    "age":20,
+    "major":"Computer science",
+    "Location":"zahle"
+}
+]
