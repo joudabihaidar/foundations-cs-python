@@ -1,4 +1,5 @@
-[{
+[
+{
     "name":"Joud",
     "age":19,
     "major": "Bachelor's in mathematics option Data science",
@@ -9,7 +10,7 @@
     "age":20,
     "major": "Computer graphics",
     "location": "beirut"
-}
+},
 {
     "name":"Anthony",
     "age":20,

@@ -15,6 +15,8 @@ def sumTuple(t1,t2):
         s=s+t1[i]+t2[i]
         SUM.append(s)
     return tuple(SUM)
+
+
 ############
 # Choice 3 #
 ############
@@ -64,7 +66,12 @@ def importJson(json_file):
     objects_list=[]
     for obj in cleaned_data:
         objects_list.append(obj.split(','))
-    #print(objects_list)
+    #taking into consideration the spaces at the start and end of the json file
+    if objects_list[0]==['']:
+        objects_list=objects_list[1:len(objects_list)]
+    if objects_list[len(objects_list)-1]==['']:
+        objects_list=objects_list[0:len(objects_list)-1]
+    print(objects_list)
     
     
     
@@ -84,13 +91,13 @@ def importJson(json_file):
         parsed_data.append(dictJson)
     
     
-    return parsed_data  
+    return parsed_data
     
-          
+json_file=r"C:\Users\Legion\Desktop\FCS\Assignments\assignment_03_Joud_AbiHaidar\JSON_file1.json"
+importJson(json_file)   
     
+# part 5) Printing the objects:
     
-    # part 5) Printing the objects:
-    
-    #displayParsedData(parsed_data)
+displayParsedData(importJson(json_file))
 
 
