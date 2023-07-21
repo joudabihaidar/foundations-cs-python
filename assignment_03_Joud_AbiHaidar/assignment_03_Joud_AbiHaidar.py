@@ -10,9 +10,11 @@ Created on Mon Jul 17 14:40:38 2023
 
 def sumTuple(t1,t2):
     SUM=[]
+    t2=t2.split(',')
+    t1=t1.split(',')
     for i in range(len(t1)):
         s=0
-        s=s+t1[i]+t2[i]
+        s=s+int(t1[i])+int(t2[i])
         SUM.append(s)
     return tuple(SUM)
 
@@ -34,14 +36,10 @@ def exportJson(dic,filename):
             s+='}'+'\n'+']'
         else:
             s+='},'+'\n'
-    print(s)
+        with open(filename, "w") as json_file:
+            json_file.write(s)
+    return s
     
-    filename = "data.json"
-    with open(filename, "w") as json_file:
-        # Step 4: Write the JSON-formatted string to the file
-        json_file.write(s)
-
-employees=[{'name': 'John Doe', 'age':20, 'job_title': 'Software Engineer','skills':['sql','python','java','html']}, {'name': 'Jane Smith', 'age': 25, 'job_title': 'Data Analyst','skills':["sql","R language","python","tableau"]}, {'name': 'Michael Johnson', 'age': 28, 'job_title': 'Product Manager','skills':["management","team-work"]}]
 
 ############
 # Choice 3 #
@@ -59,7 +57,6 @@ def displayParsedData(p):
 def importJson(json_file):
     
     # part 1) Reading the file:
-        
     with open(json_file, 'r') as file:
         json_data=file.read()
     #print(json_data)
@@ -117,14 +114,55 @@ def importJson(json_file):
         parsed_data.append(dictJson)
     
     
-    print (parsed_data)
+    return (parsed_data)
     
-json_file=r"C:\Users\Legion\Desktop\FCS\Assignments\assignment_03_Joud_AbiHaidar\JSON_file1.json"
-importJson(json_file)   
-    
-# part 5) Printing the objects:
-    
-#displayParsedData(importJson(json_file))
 
 
 
+########
+# Menu #
+########
+
+choices=['1','2','3','4']
+print('1. Sum Tuples\n2. Export JSON\n3. Import JSON\n4. Exit\n---------------------')
+choice=input("enter a choice:")
+while not choice.isnumeric() or choice not in choices:
+    choice=input("enter a choice:")
+choice=int(choice)
+while choice!=4:
+    if choice==1:
+        t1=(input("enter comma-seperated values for tuple 1:"))
+        t2=(input("enter comma-seperated values for tuple 2:"))  
+        while len(t1) != len(t2):
+            t1=(input("enter comma-seperated values for tuple 1:"))
+            t2=(input("enter comma-seperated values for tuple 2:"))  
+        print("the sum of tuples is:",sumTuple(t1, t2))
+    elif choice==2:
+        filename=input("enter the json file name:")
+        while '.json' not in filename:
+            filename=input("enter the json file name:")
+        employees=[{'name': 'John Doe', 'age':20, 'job_title': 'Software Engineer','skills':['sql','python','java','html']}, {'name': 'Jane Smith', 'age': 25, 'job_title': 'Data Analyst','skills':["sql","R language","python","tableau"]}, {'name': 'Michael Johnson', 'age': 28, 'job_title': 'Product Manager','skills':["management","team-work"]}]
+        print(exportJson(employees,filename))
+    elif choice==3:
+        json_file=r"C:\Users\Legion\Desktop\FCS\Assignments\assignment_03_Joud_AbiHaidar\JSON_file.json"
+        #json_file=input()
+        importJson(json_file)
+        displayParsedData(importJson(json_file))
+    print('1. Sum Tuples\n2. Export JSON\n3. Import JSON\n4. Exit\n---------------------')
+    choice=input("enter a choice:")
+    while not choice.isnumeric() or choice not in choices:
+        choice=input("enter a choice:")
+    choice=int(choice)
+    
+##############
+# Complexity #
+##############
+    
+# a- O(N^3)
+# b- O(N^3)
+# c- O(N!)
+# d- O(NlogM)
+# e- O(N)
+# f- O(N^2)
+# g- O(N^2)
+# h- O(N!)
