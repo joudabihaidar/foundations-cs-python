@@ -16,6 +16,32 @@ def sumTuple(t1,t2):
         SUM.append(s)
     return tuple(SUM)
 
+#############
+# Choice 2: #
+############# 
+
+def exportJson(dic,filename):
+    #print(employees)
+    s='['+'\n'
+    for i, c in enumerate(employees):
+        s+='\t'+'{'+'\n'+'\t'
+        for key, value in c.items():
+            if not issubclass(type(value), str):
+                s+='\t'+'"'+key+'"'+':'+str(value)+','+'\n'+'\t'
+            else:
+                s+='\t'+'"'+key+'"'+':'+'"'+value+'"'+','+'\n'+'\t'
+        if i==len(employees)-1:
+            s+='}'+'\n'+']'
+        else:
+            s+='},'+'\n'
+    print(s)
+    
+    filename = "data.json"
+    with open(filename, "w") as json_file:
+        # Step 4: Write the JSON-formatted string to the file
+        json_file.write(s)
+
+employees=[{'name': 'John Doe', 'age':20, 'job_title': 'Software Engineer','skills':['sql','python','java','html']}, {'name': 'Jane Smith', 'age': 25, 'job_title': 'Data Analyst','skills':["sql","R language","python","tableau"]}, {'name': 'Michael Johnson', 'age': 28, 'job_title': 'Product Manager','skills':["management","team-work"]}]
 
 ############
 # Choice 3 #
@@ -100,44 +126,5 @@ importJson(json_file)
     
 #displayParsedData(importJson(json_file))
 
-############
-# Choice 2 #
-############
 
-# filename = "data.json"
-# with open(filename, "w") as json_file:
-#     # Step 4: Write the JSON-formatted string to the file
-#     json_file.write(json_string)
-
-# from dictionary to json file
-
-employees=[{'name': 'John Doe', 'age': '30', 'job_title': 'Software Engineer'}, {'name': 'Jane Smith', 'age': '25', 'job_title': 'Data Analyst'}, {'name': 'Michael Johnson', 'age': '28', 'job_title': 'Product Manager'}]
-element=[]
-json=[]
-for i , c in enumerate(employees):
-    element=[]
-    for key, value in c.items():
-        key_value_pair=key+":"+value
-        element.append(key_value_pair.split(':'))
-    json.append(element)
-print(json)
-
-json_file_string="["+"\n"+'\t'
-for list1 in range(len(json)):
-        json_file_string+='{'
-        
-        
-        #write the rest of the loops here
-        
-        #if json[list1]!=len(json)-1:
-        json_file_string+='\n'+'\t'+'},'+'\n'+'\t'
-        #else:
-json_file_string=json_file_string[0:len(json_file_string)-1]+'\t'+'}'+'\n'+']'
-    # for list2 in range(len(list1)):
-    #     json_file_string+='{'
-    #     if list1[list2]==len(list1)-1:
-    #         json_file_string+='}'+'\n'+']'
-    #     else:
-    #         json_file_string+='},'
-print(json_file_string)
 

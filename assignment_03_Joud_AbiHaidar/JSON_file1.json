@@ -4,19 +4,22 @@
   {
   "name": "John Doe",
   "age": 30,
-  "job_title": "Software Engineer"
+  "job_title": "Software Engineer",
+  "skills":["sql","python","java","html"]
 },
   {
   "name": "Jane Smith",
   "age": 25,
-  "job_title": "Data Analyst"
+  "job_title": "Data Analyst",
+  "skills":["sql","R language","python","tableau"]
   },
 
 
   {
   "name": "Michael Johnson",
   "age": 28,
-  "job_title": "Product Manager"
+  "job_title": "Product Manager",
+  "skills":["management","team-work"]
 }
 
 ]
