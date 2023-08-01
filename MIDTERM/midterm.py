@@ -363,7 +363,7 @@ def main():
     ####################
     # reading the file #
     ####################
-    with open(r"C:\Users\Legion\Desktop\midterm\tickets.txt", 'r') as file:
+    with open("tickets.txt", 'r') as file:
         text_file=file.read()
     #####################
     # Creating the list #
