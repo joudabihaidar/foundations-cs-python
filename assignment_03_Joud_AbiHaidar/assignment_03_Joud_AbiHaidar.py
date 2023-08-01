@@ -141,7 +141,7 @@ while choice!=4:
         filename=input("enter the json file name:")
         while '.json' not in filename:
             filename=input("enter the json file name:")
-        employees=[{'name': 'John Doe', 'age':20, 'job_title': 'Software Engineer','skills':['sql','python','java','html']}, {'name': 'Jane Smith', 'age': 25, 'job_title': 'Data Analyst','skills':["sql","R language","python","tableau"]}, {'name': 'Michael Johnson', 'age': 28, 'job_title': 'Product Manager','skills':["management","team-work"]}]
+        employees=[{'name': 'John Doe', 'age':20, 'job_title': {'Software Engineer':20,'joud':2},'skills':['sql','python','java','html']}, {'name': 'Jane Smith', 'age': 25, 'job_title': 'Data Analyst','skills':["sql","R language","python","tableau"]}, {'name': 'Michael Johnson', 'age': 28, 'job_title': 'Product Manager','skills':["management","team-work"]}]
         print(exportJson(employees,filename))
     elif choice==3:
         json_file=r"C:\Users\Legion\Desktop\FCS\Assignments\assignment_03_Joud_AbiHaidar\JSON_file.json"
