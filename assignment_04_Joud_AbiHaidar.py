@@ -13,17 +13,18 @@ class Graph:
   def AddUser(self,user):
       
     # validating the users username
-    while user in list_users:
+    while user in self.list_users:
         print("this username already exists")
         user=input("enter another username")
-    #adding a new column in the AM
+        
+    #adding a new row in the AM
     
     self.adj_matrix.append([0]*len(list_users))
               
     # adding the user to the users list
     self.list_users.append(user)
     
-    #adding a new row in the AM to have a NxN matrix
+    #adding a new column in the AM to have a NxN matrix
     for vertice in self.adj_matrix:
         vertice.append(0) #adding an extra element in each list
 
@@ -31,16 +32,19 @@ class Graph:
       if user not in self.list_users:
           print("the user does not exist")
       else:
-          for i,c in enumerate(self.list_users):
-              # i stands for index
-              # c stands for the element itself
-              if c==user:
-                  self.list_users.remove(c)
-                  self.adj_matrix.remove(self.adj_matrix[i])
-
-          #removing a row in the AM to have a NxN matrix
-          for vertice in self.adj_matrix:
-              vertice.pop() #removing an element in each list
+          for i in range(len(self.list_users)):
+              if list_users[i]==user:
+                  #removing the user from the list of users
+                  list_users.pop(i)
+                  #removing its row from AM
+                  self.adj_matrix.pop(i)
+                  #removing the column to have NxN matrix
+                  for vertice in self.adj_matrix:
+                      vertice.pop(i)
+              else:
+                  # instead of using break Im gonna do this:
+                  i=len(self.list_users)
+                        
         
     
 #first of all i need to create a list or a dictionary of all users (and keep track of their position)
