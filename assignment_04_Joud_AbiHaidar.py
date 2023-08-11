@@ -41,10 +41,7 @@ class Graph:
                   #removing the column to have NxN matrix
                   for vertice in self.adj_matrix:
                       vertice.pop(i)
-              else:
-                  # instead of using break Im gonna do this:
-                  i=len(self.list_users)
-                        
+             
         
     
 #first of all i need to create a list or a dictionary of all users (and keep track of their position)
