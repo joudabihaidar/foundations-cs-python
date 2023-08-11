@@ -18,7 +18,6 @@ class Graph:
         user=input("enter another username")
         
     #adding a new row in the AM
-    
     self.adj_matrix.append([0]*len(list_users))
               
     # adding the user to the users list
@@ -29,21 +28,58 @@ class Graph:
         vertice.append(0) #adding an extra element in each list
 
   def RemoveUser(self,user):
+      
       if user not in self.list_users:
           print("the user does not exist")
       else:
           for i in range(len(self.list_users)):
               if list_users[i]==user:
+                  
                   #removing the user from the list of users
                   list_users.pop(i)
+                  
                   #removing its row from AM
                   self.adj_matrix.pop(i)
+                  
                   #removing the column to have NxN matrix
                   for vertice in self.adj_matrix:
                       vertice.pop(i)
+                      
+  def AddConnection(self,user1,user2):
+      for user in range(len(self.list_users)):
+          #getting the index of user 1 so we can use it AM
+          if self.list_users[user]==user1:
+              index_user1=user
              
-        
-    
+          #getting the index of user 2 so we can use it AM      
+          if self.list_users[user]==user2:
+              index_user2=user
+              
+      #changing the values of the edges in AM to indecate that there's a connection
+      self.adj_matrix[index_user1][index_user2]=1
+      self.adj_matrix[index_user2][index_user1]=1
+      
+  def disconnet(self,user1,user2):
+      #here its the same process as adding a friend
+      # the only diffrence is that we're setting the edges to 0 since theres no more connection
+      for user in range(len(self.list_users)):
+          if self.list_users[user]==user1:
+              index_user1=user
+          if self.list_users[user]==user2:
+              index_user2=user
+      self.adj_matrix[index_user1][index_user2]=0
+      self.adj_matrix[index_user2][index_user1]=0
+      
+  def friends(self,user):
+      for users in range(len(self.list_users)):
+          if self.list_users[users]==user:
+              
+              #navigating in the list of connections of the user that we want
+              for edge in range(len(self.adj_matrix[users])):
+                  if self.adj_matrix[users][edge]==1:
+                      print(self.list_users[edge])
+  #def users_bfs(self,starting_vertex):
+      
 #first of all i need to create a list or a dictionary of all users (and keep track of their position)
 # next i need to create a 2d list for the adjacency matrix of size nxn and n will be the number of users/vertices
 
